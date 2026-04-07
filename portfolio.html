@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vishal Chowdary Peddu — Portfolio</title>
+  <meta name="description" content="Python Full Stack Developer & ML Engineer | UNC Charlotte M.S. CS | Capital One | JPMorgan Chase" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0f1e;
+      --accent: #00d4aa;
+      --accent2: #4f8ef7;
+      --accent3: #ff6b6b;
+      --gold: #f5c842;
+      --text: #f0f4ff;
+      --muted: #8892b0;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      min-height: 100vh;
+    }
+
+    .dash { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+
+    /* OTW BANNER */
+    .otw-banner {
+      background: linear-gradient(135deg, rgba(0,212,170,0.08), rgba(79,142,247,0.08));
+      border: 0.5px solid rgba(0,212,170,0.25);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .otw-text { font-size: 14px; color: var(--text); font-weight: 500; }
+    .otw-roles { display: flex; gap: 8px; flex-wrap: wrap; }
+    .otw-role {
+      background: rgba(0,212,170,0.1);
+      border: 0.5px solid rgba(0,212,170,0.3);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'DM Mono', monospace;
+    }
+    .otw-loc { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; margin-top: 4px; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, #0d1b3e 0%, #0a1628 50%, #071020 100%);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 200px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(79,142,247,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,212,170,0.1);
+      border: 0.5px solid rgba(0,212,170,0.3);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .dot-live {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 1.8s ease infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 0%, #a8c4ff 50%, #00d4aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title { font-size: 1.1rem; color: var(--muted); margin-bottom: 1rem; font-weight: 500; }
+    .hero-title span { color: var(--accent2); font-weight: 600; }
+
+    .hero-contact { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+    }
+    .contact-item .ci { color: var(--accent); font-size: 14px; }
+
+    .hero-stats { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
+    .stat-pill { text-align: right; }
+    .stat-pill .num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .stat-pill .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: 'DM Mono', monospace; }
+
+    /* LAYOUT */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+    /* CARDS */
+    .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem; }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-title::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--accent); border-radius: 1px; }
+
+    /* EXPERIENCE */
+    .exp-item { margin-bottom: 1.5rem; position: relative; padding-left: 1rem; }
+    .exp-item::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 3px rgba(0,212,170,0.15); }
+    .exp-item:not(:last-child)::after { content: ''; position: absolute; left: 2.5px; top: 18px; width: 1px; height: calc(100% + 8px); background: var(--border); }
+    .exp-company { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+    .exp-role { font-size: 12px; color: var(--accent2); font-weight: 500; margin-bottom: 4px; }
+    .exp-date { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); margin-bottom: 8px; }
+    .exp-metrics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .metric-tag { background: rgba(79,142,247,0.08); border: 0.5px solid rgba(79,142,247,0.2); color: var(--accent2); font-size: 10px; padding: 2px 8px; border-radius: 4px; font-family: 'DM Mono', monospace; }
+    .metric-tag.green { background: rgba(0,212,170,0.08); border-color: rgba(0,212,170,0.2); color: var(--accent); }
+    .metric-tag.red { background: rgba(255,107,107,0.08); border-color: rgba(255,107,107,0.2); color: var(--accent3); }
+
+    /* SKILLS */
+    .skill-group { margin-bottom: 1.1rem; }
+    .skill-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+    .skill-name { font-size: 12px; color: var(--text); font-weight: 500; }
+    .skill-pct { font-size: 10px; color: var(--accent); font-family: 'DM Mono', monospace; }
+    .skill-bar { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent)); transform-origin: left; animation: barGrow 1.2s ease forwards; }
+    @keyframes barGrow { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+
+    /* TECH */
+    .tech-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tech-chip { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); color: var(--muted); font-size: 11px; padding: 5px 11px; border-radius: 20px; font-family: 'DM Mono', monospace; transition: all 0.2s; cursor: default; }
+    .tech-chip:hover { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.3); color: var(--accent); }
+    .tech-chip.primary { background: rgba(0,212,170,0.08); border-color: rgba(0,212,170,0.25); color: var(--accent); }
+
+    /* IMPACT */
+    .impact-card { background: rgba(255,255,255,0.03); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+    .impact-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+    .impact-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    /* EDUCATION */
+    .edu-card { background: rgba(79,142,247,0.06); border: 0.5px solid rgba(79,142,247,0.2); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 10px; }
+    .edu-degree { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .edu-school { font-size: 12px; color: var(--accent2); margin-bottom: 2px; }
+    .edu-year { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+    /* ML */
+    .ml-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ml-chip { background: rgba(245,200,66,0.08); border: 0.5px solid rgba(245,200,66,0.2); color: var(--gold); font-size: 11px; padding: 5px 11px; border-radius: 6px; font-family: 'DM Mono', monospace; }
+
+    /* SECTION HEADER */
+    .section-header { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin: 2rem 0 1rem; display: flex; align-items: center; gap: 12px; }
+    .section-header::after { content: ''; flex: 1; height: 0.5px; background: var(--border); }
+
+    .domain-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,107,107,0.08); border: 0.5px solid rgba(255,107,107,0.2); color: var(--accent3); font-size: 10px; padding: 3px 10px; border-radius: 4px; font-family: 'DM Mono', monospace; margin-bottom: 10px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: row; align-items: flex-start; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero-name { font-size: 2rem; }
+      .impact-grid-5 { grid-template-columns: repeat(3, 1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="dash">
+
+  <!-- OTW BANNER -->
+  <div class="otw-banner">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+        <div class="dot-live"></div>
+        <span class="otw-text">Open to opportunities</span>
+      </div>
+      <div class="otw-loc">Charlotte, NC — USA &nbsp;|&nbsp; Authorized to work &nbsp;|&nbsp; Available immediately</div>
+    </div>
+    <div class="otw-roles">
+      <span class="otw-role">SDE</span>
+      <span class="otw-role">Backend Engineer</span>
+      <span class="otw-role">ML Engineer</span>
+      <span class="otw-role">Data Science</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-badge"><div class="dot-live"></div> M.S. Computer Science · UNC Charlotte '25</div>
+      <div class="hero-name">Vishal Chowdary<br>Peddu</div>
+      <div class="hero-title">Python Full Stack Developer &amp; <span>ML Engineer</span></div>
+      <div class="hero-contact">
+        <div class="contact-item"><span class="ci">@</span>vishalchowdarypjobs@gmail.com</div>
+        <div class="contact-item"><span class="ci">#</span>+1 980-457-9858</div>
+        <div class="contact-item"><span class="ci">&#9679;</span>Charlotte, NC</div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <div class="num">3+</div>
+        <div class="lbl">Years exp.</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num" style="color:var(--accent2);">5K+</div>
+        <div class="lbl">req/min APIs</div>
+      </div>
+      <div class="stat-pill">
+        <div class="num" style="color:var(--gold);">92%</div>
+        <div class="lbl">code coverage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <div class="section-header">Quantified Impact</div>
+  <div class="impact-grid-5" style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:1.5rem;">
+    <div class="impact-card"><div class="impact-num" style="color:var(--accent);">40%</div><div class="impact-desc">Manual error reduction</div></div>
+    <div class="impact-card"><div class="impact-num" style="color:var(--accent2);">30%</div><div class="impact-desc">Model inference speed up</div></div>
+    <div class="impact-card"><div class="impact-num" style="color:var(--gold);">35%</div><div class="impact-desc">Data preprocessing cut</div></div>
+    <div class="impact-card"><div class="impact-num" style="color:var(--accent3);">50%</div><div class="impact-desc">Deployment time saved</div></div>
+    <div class="impact-card"><div class="impact-num" style="color:var(--accent);">73%</div><div class="impact-desc">Batch processing faster</div></div>
+  </div>
+
+  <!-- EXPERIENCE + SKILLS -->
+  <div class="section-header">Experience &amp; Skills</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Work history</div>
+      <div class="exp-item">
+        <div class="exp-company">Capital One</div>
+        <div class="exp-role">Python Full Stack Developer</div>
+        <div class="exp-date">Mar 2025 – Present · McLean, VA</div>
+        <div class="domain-badge">&#9632; Credit Risk &amp; Fraud Detection</div>
+        <div class="exp-metrics">
+          <span class="metric-tag green">Fraud Detection Dashboard</span>
+          <span class="metric-tag">FastAPI · 5K+ req/min</span>
+          <span class="metric-tag green">22% faster page load</span>
+          <span class="metric-tag">AWS Lambda · Serverless</span>
+          <span class="metric-tag red">-40% MTTD</span>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-company">JPMorgan Chase &amp; Co.</div>
+        <div class="exp-role">Python Software Developer</div>
+        <div class="exp-date">Jun 2022 – Jul 2024 · India</div>
+        <div class="domain-badge" style="border-color:rgba(79,142,247,0.2);background:rgba(79,142,247,0.08);color:var(--accent2);">&#9632; Investment Banking · Trade Processing</div>
+        <div class="exp-metrics">
+          <span class="metric-tag green">-40% manual errors</span>
+          <span class="metric-tag">Flask microservices</span>
+          <span class="metric-tag green">-50% deploy time</span>
+          <span class="metric-tag">PySpark · 500MB+ files</span>
+          <span class="metric-tag red">2 days → 2 hrs setup</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Proficiency</div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">Python / FastAPI / Django</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">React.js / Redux / TypeScript</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">AWS (Lambda, EC2, S3, RDS)</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">ML / XGBoost / Scikit-learn</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">PostgreSQL / MongoDB / Oracle</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">Docker / Kubernetes / CI-CD</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+      <div class="skill-group"><div class="skill-label"><span class="skill-name">Celery / Redis / Kafka</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="section-header">Tech Stack</div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">ML &amp; Data Science</div>
+      <div class="ml-chips">
+        <span class="ml-chip">XGBoost</span><span class="ml-chip">TensorFlow</span><span class="ml-chip">Keras</span><span class="ml-chip">Scikit-learn</span><span class="ml-chip">HuggingFace</span><span class="ml-chip">NLTK / spaCy</span><span class="ml-chip">Pandas</span><span class="ml-chip">NumPy</span><span class="ml-chip">PySpark</span><span class="ml-chip">Matplotlib</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Backend &amp; APIs</div>
+      <div class="tech-grid">
+        <span class="tech-chip primary">FastAPI</span><span class="tech-chip primary">Django REST</span><span class="tech-chip primary">Flask</span><span class="tech-chip">Node.js</span><span class="tech-chip">GraphQL</span><span class="tech-chip">WebSockets</span><span class="tech-chip">Celery</span><span class="tech-chip">Redis</span><span class="tech-chip">RabbitMQ</span><span class="tech-chip">Kafka</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Cloud &amp; DevOps</div>
+      <div class="tech-grid">
+        <span class="tech-chip primary">AWS EC2</span><span class="tech-chip primary">AWS Lambda</span><span class="tech-chip primary">S3 / RDS</span><span class="tech-chip">API Gateway</span><span class="tech-chip">CloudWatch</span><span class="tech-chip">Docker</span><span class="tech-chip">Kubernetes</span><span class="tech-chip">Jenkins</span><span class="tech-chip">GitHub Actions</span><span class="tech-chip">Azure</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION + QUALITY -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Education</div>
+      <div class="edu-card">
+        <div class="edu-degree">M.S. Computer Science</div>
+        <div class="edu-school">UNC Charlotte · Charlotte, NC</div>
+        <div class="edu-year">Graduated December 2025</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Tech Computer Science</div>
+        <div class="edu-school">SRM University Amaravathi · India</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Quality &amp; Observability</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;">
+        <div style="background:rgba(0,212,170,0.06);border:0.5px solid rgba(0,212,170,0.2);border-radius:10px;padding:12px;text-align:center;">
+          <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);">92%</div>
+          <div style="font-size:11px;color:var(--muted);">Code coverage</div>
+        </div>
+        <div style="background:rgba(79,142,247,0.06);border:0.5px solid rgba(79,142,247,0.2);border-radius:10px;padding:12px;text-align:center;">
+          <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent2);">200ms</div>
+          <div style="font-size:11px;color:var(--muted);">API latency target</div>
+        </div>
+      </div>
+      <div class="tech-grid">
+        <span class="tech-chip">PyTest</span><span class="tech-chip">Jest</span><span class="tech-chip">Selenium</span><span class="tech-chip">Cypress</span><span class="tech-chip">SonarQube</span><span class="tech-chip">Prometheus</span><span class="tech-chip">Grafana</span><span class="tech-chip">ELK Stack</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;margin-top:2.5rem;padding-top:1.5rem;border-top:0.5px solid var(--border);">
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);">vishalchowdarypjobs@gmail.com &nbsp;·&nbsp; +1 980-457-9858 &nbsp;·&nbsp; Charlotte, NC</div>
+    <div style="font-size:10px;color:rgba(136,146,176,0.4);margin-top:6px;font-family:'DM Mono',monospace;">Available for SDE · Backend · ML · AI/ML roles</div>
+  </div>
+
+</div>
+</body>
+</html>
